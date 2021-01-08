@@ -16,7 +16,6 @@ print(sys.executable)
 
 def work():
     try:
-        label_text.set("downloading...")
         url = entry.get()
         m3u8_file_path = os.getcwd() + '\\' + 'download\\' + 'z.txt'
         url_base = ""
@@ -79,7 +78,6 @@ def work():
             traceback.print_exc()
             print(e)
     finally:
-        label_text.set("url")
         #remove non-merged .ts files
         files = glob.glob("%s*.ts" % (os.getcwd() + '\\' + 'download\\'))
         for fname in files:
@@ -91,9 +89,8 @@ def work():
 
 window = tk.Tk()
 
-label_text = tk.StringVar(window)
 
-label = tk.Label(window, textvariable=label_text).pack()
+label = tk.Label(window, text="url").pack()
 entry = tk.Entry()
 entry.pack()
 
@@ -106,9 +103,4 @@ button = tk.Button(
     command=work
 ).pack()
 
-label_text.set("url")
-
 window.mainloop()
-
-label_text.set("url2")
-
